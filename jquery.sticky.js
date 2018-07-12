@@ -114,8 +114,9 @@
           }
 
           // Check if sticky has reached end of container and stop sticking
+            // stickyWrapperContainer should have position:relative
           var stickyWrapperContainer = s.stickyWrapper.parent();
-          var unstick = (s.stickyElement.offset().top + s.stickyElement.outerHeight() >= stickyWrapperContainer.offset().top + stickyWrapperContainer.outerHeight()) && (s.stickyElement.offset().top <= s.topSpacing);
+            var unstick = $window.scrollTop() > stickyWrapperContainer.offset().top + stickyWrapperContainer.height() - s.stickyElement.outerHeight(true) - s.topSpacing;
 
           if( unstick ) {
             s.stickyElement
